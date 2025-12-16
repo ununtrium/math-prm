@@ -1,0 +1,21 @@
+# --- Core Deep Learning & NLP ---
+torch
+transformers
+datasets
+accelerate
+bitsandbytes
+
+# --- Inference Engine ---
+#vllm>=0.6.0
+
+# --- Data Processing & Math ---
+numpy
+pandas
+scikit-learn
+
+# --- Utilities ---
+tqdm
+tensorboard
+protobuf
+sentencepiece
+latex2sympy2

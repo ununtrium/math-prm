@@ -1,0 +1,60 @@
+# --- Python一般 ---
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+venv/
+.vscode/
+.idea/
+
+# --- 実験データ・ログ (除外対象) ---
+# dataディレクトリ以下はすべて無視
+data/
+# logディレクトリ以下はすべて無視
+log/
+# 出力結果などのJSON/JSONLファイルも念のため除外（ルートにある場合）
+*.json
+*.jsonl
+*.csv
+
+# --- モデルファイル (除外対象) ---
+*.pth
+*.pt
+*.bin
+*.safetensors
+*.h5
+ckpt/
+models/
+checkpoints/
+
+# --- その他 ---
+.DS_Store
+*.log
+slurm-*
+
+# --- ジョブスケジューラのログ (.sh.e12345, .sh.o12345 など) ---
+*.sh.e*
+*.sh.o*
+
+# 一般的なジョブID付きログも念のため除外する場合
+*.e[0-9]*
+*.o[0-9]*
+
+# --- 仮想環境 (絶対に除外！) ---
+.delta/
+.delta_train/
+
+# --- システム・ライブラリのキャッシュ ---
+.cache/
+.config/
+.triton/
+
+# --- 実験ログ・管理ツール ---
+wandb/
+
+# --- 一時的なノートブックや画像 ---
+*.png
+
+# --- Jupyter Notebookのキャッシュ ---
+.ipynb_checkpoints/
