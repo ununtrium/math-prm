@@ -72,6 +72,33 @@ def check_correctness(pred_str, gold_str):
     except: pass
     return robust_float_check(pred_str, gold_str)
 
+def clean_text_for_prm(text):
+    """
+    Generatorが生成したチャット形式のテキストから、
+    PRM学習時(Raw形式)に不要なタグを削除して整形する。
+    正規表現を使用して、改行やスペースの揺らぎを吸収する。
+    """
+    # 1. Systemプロンプト部分を丸ごと削除
+    # <|im_start|>system ... <|im_end|> までを削除
+    text = re.sub(r"<\|im_start\|>system.*?<\|im_end\|>\s*", "", text, flags=re.DOTALL)
+    
+    # 2. Userタグを削除
+    # "<|im_start|>user" の後の改行も含めて削除
+    text = re.sub(r"<\|im_start\|>user\s*", "", text)
+    
+    # 3. ProblemとAssistantのつなぎ目を「改行1つ」に統一
+    # "<|im_end|> (改行) <|im_start|>assistant (改行)" のパターンを全て "\n" に置換
+    text = re.sub(r"<\|im_end\|>\s*<\|im_start\|>assistant\s*", "\n", text)
+    
+    # 4. 文末のタグ削除
+    text = re.sub(r"<\|im_end\|>\s*$", "", text)
+    
+    # 5. 万が一残ってしまったタグの残骸を削除（安全策）
+    text = text.replace("<|im_start|>assistant", "")
+    text = text.replace("<|im_end|>", "")
+    
+    return text.strip()
+
 # ==========================================
 # ビームサーチクラス
 # ==========================================
@@ -102,7 +129,7 @@ class VLLMStepBeamSearcher:
         
         sampling_params = SamplingParams(
             n=num_candidates, temperature=0.7, top_p=0.95, max_tokens=512,
-            stop=["\n\n", "The final answer", "Wait"], seed=self.seed 
+            stop=["\n\n", "The final answer", "Wait", "<|im_end|>"], seed=self.seed 
         )
 
         for t in range(max_steps):
@@ -147,7 +174,7 @@ class VLLMStepBeamSearcher:
                 for completion in request_output.outputs:
                     step = completion.text
                     if "\n\n" in step: step = step.split("\n\n")[0]
-                    step = step.strip()
+                    step = step.replace("<|im_end|>", "").strip()
                     if not step: continue
                     
                     new_text = curr_text + "\n" + step
@@ -161,8 +188,11 @@ class VLLMStepBeamSearcher:
                 break
 
             # 4. Score
-            scores = self.get_prm_scores_batch(next_candidates_text, batch_size=8)
-            
+            # ---------------------------------------------------
+            clean_candidates_for_prm = [clean_text_for_prm(txt) for txt in next_candidates_text]
+            scores = self.get_prm_scores_batch(clean_candidates_for_prm, batch_size=8)
+            # ---------------------------------------------------
+
             candidates_pool = []
             for i, score in enumerate(scores):
                 new_text, step, hist, h_scores = next_candidates_info[i]
@@ -211,6 +241,9 @@ def main():
         max_model_len=args.max_model_len
     )
 
+    # テンプレート適用のためだけにGeneratorのトークナイザをロード
+    gen_tokenizer = AutoTokenizer.from_pretrained(args.gen_model)
+
     searcher = VLLMStepBeamSearcher(llm, prm_model, prm_tokenizer, device, seed=args.seed)
 
     # 3. Data Load
@@ -228,10 +261,10 @@ def main():
         problem = item["problem"]
         gold_answer = extract_answer(item["solution"])
 
-        """
+        
         messages = [
             {"role": "system", "content": "Please reason step by step and put your final answer within \\boxed{}."},
-            {"role": "user", "content": raw_problem}
+            {"role": "user", "content": problem}
         ]
         # 文字列として整形 (例: "<|im_start|>system...")
         formatted_problem = gen_tokenizer.apply_chat_template(
@@ -239,11 +272,11 @@ def main():
             tokenize=False, 
             add_generation_prompt=True
         )
-        """
+        
 
         # 適用済みのテキストをビームサーチに渡す
         best_path_text, best_score, steps, step_scores = searcher.search(
-            problem,  # ★ここを変更
+            formatted_problem,  # ★ここを変更
             beam_width=args.beam_width, 
             max_steps=args.max_steps, 
             num_candidates=args.num_candidates
@@ -255,7 +288,7 @@ def main():
         
         if is_correct: correct_count += 1
         results.append({
-            "problem": raw_problem, 
+            "problem": problem, 
             "gold": gold_answer, 
             "pred": pred_answer, 
             "is_correct": is_correct,

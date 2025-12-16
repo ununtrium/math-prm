@@ -2,7 +2,7 @@
 
 # 設定
 SEEDS=(0 1 2 3 4 5 6 7 8 9)
-N_SAMPLES=16
+N_SAMPLES=64
 MODEL="Qwen/Qwen2.5-Math-7B-Instruct"
 WORK_DIR="/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM"
 OUT_DIR="data/experiments/majority_voting_n${N_SAMPLES}"
@@ -18,7 +18,7 @@ for SEED in "${SEEDS[@]}"; do
 #!/bin/sh
 #PBS -q rt_HG
 #PBS -l select=1
-#PBS -l walltime=3:00:00
+#PBS -l walltime=2:00:00
 #PBS -P gch51650
 #PBS -N ${RUN_NAME}
 

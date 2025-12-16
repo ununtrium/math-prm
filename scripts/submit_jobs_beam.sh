@@ -6,18 +6,18 @@
 
 # 実行したいシードのリスト (必要なものをスペース区切りで記述)
 # 例: "2 4 6" や "0 1 2 3 4 5 6 7 8 9" など
-SEEDS=(7 8 9)
+SEEDS=(0 1 2 3 4 5 6 7 8 9)
 
 # 共通設定
-WIDTH="20"
-CANDIDATES="10"
+WIDTH="5"
+CANDIDATES="5"
 MEMORY="0.6"
 
 # 出力先ディレクトリ
 # ※元のコードのパス末尾が seed0_beam となっていましたが、
 #   複数シードを保存する場合は汎用的な名前の方が管理しやすいかもしれません。
 #   必要に応じて書き換えてください。
-OUT_DIR="data/experiments/benchmark_width20_candi10_1.5b_v3.0"
+OUT_DIR="data/experiments/benchmark_width20_candi10_1.5b_v3.0_chat_clean"
 
 # 作業ディレクトリ
 WORK_DIR="/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM"
@@ -29,7 +29,7 @@ WORK_DIR="/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM"
 for SEED in "${SEEDS[@]}"; do
     
     # ジョブ名などを定義
-    RUN_NAME="32_run_beam_1.5b_30k_v3.0_width${WIDTH}_candi${CANDIDATES}_seed${SEED}"
+    RUN_NAME="32_run_beam_1.5b_30k_v3.0_width${WIDTH}_candi${CANDIDATES}_seed${SEED}_chat_clean"
     LOG_FILE="${WORK_DIR}/log/${RUN_NAME}.log"
     
     echo "Submitting Job for SEED: ${SEED} ..."
