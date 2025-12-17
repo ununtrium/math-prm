@@ -1,7 +1,7 @@
 #!/bin/sh
 #PBS -q rt_HF
 #PBS -l select=1
-#PBS -l walltime=18:00:00
+#PBS -l walltime=12:00:00
 #PBS -P gch51650
 
 
@@ -20,7 +20,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 
 # プロジェクト設定
 YOUR_PROJECT_NAME="Delta-PRM"
-YOUR_RUN_NAME="03_train_orm_7b_30k_v1.0"
+YOUR_RUN_NAME="03_train_orm_7b_30k_v1.0_chat_clean_new_"
 
 # 環境指定
 source .delta_train/bin/activate
@@ -32,4 +32,4 @@ wandb login
 logfilename="${HOME}/log/${YOUR_RUN_NAME}.log"
 
 
-torchrun --nproc_per_node=8 src/03_train_orm.py >& ${logfilename}
+torchrun --nproc_per_node=8 src/03_train_orm_chat_clean_7b.py >& ${logfilename}

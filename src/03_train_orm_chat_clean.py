@@ -1,5 +1,6 @@
 import os
 import torch
+import re
 from transformers import (
     AutoTokenizer,
     AutoModelForSequenceClassification,
@@ -13,114 +14,93 @@ from datasets import load_dataset
 # ==========================================
 # 1. 設定パラメータ (Configuration)
 # ==========================================
-# モデル設定
 MODEL_ID = "Qwen/Qwen2.5-Math-1.5B-Instruct" 
-
-# データパス
 TRAIN_FILE = "data/orm_train_data_30k.jsonl"
-OUTPUT_DIR = "models/orm_1.5b_30k_v1.0"
+OUTPUT_DIR = "models/orm_1.5b_30k_v3.0_chat_clean_new"
 
-# ★変更点: 長文対応設定★
-# 分析結果(Max 2754 tokens)に基づき、3072に拡張して切り捨てを回避
+# Max Sequence Length
 MAX_SEQ_LENGTH = 3072     
 
-# 学習ハイパーパラメータ
-LEARNING_RATE = 2e-5      
-NUM_EPOCHS = 2            # 学習不足を防ぐため3周回す
-BATCH_SIZE = 2            # GPUメモリがきつい場合は 2 に下げてください
-GRAD_ACCUMULATION = 16     # 実質バッチサイズ = 4 * 8GPU * 4 = 128
-WARMUP_RATIO = 0.03
+# ★大規模データ(2M samples)向けチューニング
+LEARNING_RATE = 2e-5      # ★変更: データが多いので少し下げて丁寧に学習させる(1e-5 or 2e-5)
+NUM_EPOCHS = 1            # ★変更: 2Mサンプルなら1エポックで十分収束します
+BATCH_SIZE = 4            
+GRAD_ACCUMULATION = 8    # ★変更: 勾配を安定させるため、実質バッチサイズを大きめに確保 (4*16*N_GPU)
+WARMUP_RATIO = 0.0       # ★変更: 標準的な値に戻す
 SEED = 42
+
+# ==========================================
+# タグ削除関数 (変更なし・必須)
+# ==========================================
+def clean_text_for_prm(text):
+    text = re.sub(r"<\|im_start\|>system.*?<\|im_end\|>\n?", "", text, flags=re.DOTALL)
+    text = re.sub(r"<\|im_start\|>user\n?", "", text)
+    text = re.sub(r"<\|im_end\|>\n?<\|im_start\|>assistant\n?", "\n", text)
+    text = text.replace("<|im_end|>", "")
+    return text.strip()
 
 def main():
     set_seed(SEED)
-    
-    # GPU環境の確認
     n_gpus = torch.cuda.device_count()
-    print(f"Found {n_gpus} GPUs. Preparing for training...")
-    print(f"Max Sequence Length: {MAX_SEQ_LENGTH}")
+    print(f"Found {n_gpus} GPUs. Training on 2M+ samples (1 Epoch)...")
 
     # ==========================================
-    # 2. データセットの準備
+    # 2. データセット (変更なし)
     # ==========================================
-    print(f"Loading dataset from {TRAIN_FILE}...")
+    # JSONLが巨大な場合、メモリ不足なら streaming=True を検討してください
+    # (64GB以上のRAMがあれば通常のload_datasetで大丈夫です)
     dataset = load_dataset("json", data_files=TRAIN_FILE, split="train")
     
-    # 学習用(95%)と検証用(5%)に分割
+    # 検証データは絶対数として2000件あれば統計的に十分信頼できます
     dataset = dataset.train_test_split(test_size=5000, seed=SEED)
     train_ds = dataset["train"]
     eval_ds = dataset["test"]
     
-    print(f"Train samples: {len(train_ds)}")
+    print(f"Train samples: {len(train_ds)} (approx 2M)")
     print(f"Eval samples:  {len(eval_ds)}")
 
     # ==========================================
-    # 3. トークナイザと前処理
+    # 3. 前処理 (変更なし)
     # ==========================================
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-    
-    # パディングトークンの設定
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    # ※補足: MAX_SEQ_LENGTH = 3072 にしたため、
-    # truncation_side='left' のハックは不要になりました（デフォルトのままでOK）
-
     def preprocess_function(examples):
-        # 入力: full_text (問題文 + ... + ステップ)
-        # ラベル: label (スコア)
+        cleaned_texts = [clean_text_for_prm(text) for text in examples["full_text"]]
         tokenized = tokenizer(
-            examples["full_text"],
-            padding=False,          # DataCollatorで動的にパディング
-            truncation=True,        # 3072超えがあれば切り捨てる(発生しないはず)
+            cleaned_texts,
+            padding=False,          
+            truncation=True,        
             max_length=MAX_SEQ_LENGTH
         )
         tokenized["labels"] = examples["label"]
         return tokenized
 
-    # 不要なカラム（分析用メタデータ）を削除して軽量化
     remove_cols = train_ds.column_names
     
-    print("Tokenizing training dataset...")
-    train_ds = train_ds.map(
-        preprocess_function, 
-        batched=True, 
-        num_proc=8, 
-        remove_columns=remove_cols,
-        desc="Tokenizing train"
-    )
-    
-    print("Tokenizing evaluation dataset...")
-    eval_ds = eval_ds.map(
-        preprocess_function, 
-        batched=True, 
-        num_proc=4, 
-        remove_columns=remove_cols,
-        desc="Tokenizing eval"
-    )
+    # 200万件の処理には時間がかかるので num_proc をCPUコア数に合わせて増やしてください
+    print("Tokenizing... (This may take a while for 2M samples)")
+    train_ds = train_ds.map(preprocess_function, batched=True, num_proc=16, remove_columns=remove_cols)
+    eval_ds = eval_ds.map(preprocess_function, batched=True, num_proc=4, remove_columns=remove_cols)
 
     # ==========================================
-    # 4. モデルの準備 (Regression Head)
+    # 4. モデル (変更なし)
     # ==========================================
-    print("Loading model...")
-    # num_labels=1 -> 回帰モード(MSELoss)
     model = AutoModelForSequenceClassification.from_pretrained(
         MODEL_ID,
         num_labels=1,
         torch_dtype=torch.bfloat16, 
-        device_map=None,            # DDP用
+        device_map=None,            
         attn_implementation="flash_attention_2" 
     )
-    
     model.config.pad_token_id = tokenizer.pad_token_id
     model.config.problem_type = "regression"
 
     # ==========================================
     # 5. 学習設定 (Trainer)
     # ==========================================
-    # WandB設定
     os.environ["WANDB_PROJECT"] = "Delta-PRM"
-    os.environ["WANDB_LOG_MODEL"] = "false"
     
     training_args = TrainingArguments(
         output_dir=OUTPUT_DIR,
@@ -130,23 +110,23 @@ def main():
         gradient_accumulation_steps=GRAD_ACCUMULATION,
         num_train_epochs=NUM_EPOCHS,
         weight_decay=0.01,
+        warmup_ratio=WARMUP_RATIO,
         
-        # 評価・保存設定
+        # ★2Mデータ用の保存設定
         eval_strategy="steps",
-        eval_steps=1000,             # こまめにLossを確認
+        eval_steps=1000,             # 2000ステップごとに評価
         save_strategy="steps",
-        save_steps=1000,             
-        save_total_limit=5,         # 保存数を少し増やす
-        logging_steps=100,
+        save_steps=1000,             # 2000ステップごとに保存
+        save_total_limit=3,
+
+        load_best_model_at_end=True, 
+        metric_for_best_model="loss",
         
-        # 精度・高速化設定
+        logging_steps=50,
         bf16=True,                  
         dataloader_num_workers=4,
-        ddp_find_unused_parameters=False,
-        group_by_length=True,       # 長さが近いデータをまとめてパディング削減
-        
-        # ログ設定
-        run_name="orm_1.5b_run_30k_v1.0",
+        group_by_length=True,
+        run_name="orm_1.5b_run_30k_v3.0_chat_clean_new",
         report_to="wandb",          
     )
 
@@ -159,18 +139,12 @@ def main():
         data_collator=DataCollatorWithPadding(tokenizer=tokenizer),
     )
 
-    # ==========================================
-    # 6. 学習実行
-    # ==========================================
     print("Starting training...")
     trainer.train()
-
-    print(f"Saving final model to {OUTPUT_DIR}...")
     trainer.save_model(OUTPUT_DIR)
     tokenizer.save_pretrained(OUTPUT_DIR)
     
-    metrics = trainer.evaluate()
-    print("Final Eval Metrics:", metrics)
+    print("Done!")
 
 if __name__ == "__main__":
     main()

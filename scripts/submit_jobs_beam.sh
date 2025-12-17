@@ -17,7 +17,7 @@ MEMORY="0.6"
 # ※元のコードのパス末尾が seed0_beam となっていましたが、
 #   複数シードを保存する場合は汎用的な名前の方が管理しやすいかもしれません。
 #   必要に応じて書き換えてください。
-OUT_DIR="data/experiments/benchmark_width20_candi10_1.5b_v3.0_chat_clean"
+OUT_DIR="data/experiments/benchmark_width5_candi5_1.5b_v3.0_temp_chat_clean_new"
 
 # 作業ディレクトリ
 WORK_DIR="/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM"
@@ -29,7 +29,7 @@ WORK_DIR="/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM"
 for SEED in "${SEEDS[@]}"; do
     
     # ジョブ名などを定義
-    RUN_NAME="32_run_beam_1.5b_30k_v3.0_width${WIDTH}_candi${CANDIDATES}_seed${SEED}_chat_clean"
+    RUN_NAME="32_run_beam_1.5b_30k_v3.0_width${WIDTH}_candi${CANDIDATES}_seed${SEED}_temp_chat_clean_new"
     LOG_FILE="${WORK_DIR}/log/${RUN_NAME}.log"
     
     echo "Submitting Job for SEED: ${SEED} ..."

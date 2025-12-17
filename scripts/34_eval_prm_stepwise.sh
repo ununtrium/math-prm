@@ -1,7 +1,7 @@
 #!/bin/sh
-#PBS -q rt_HF
+#PBS -q rt_HG
 #PBS -l select=1
-#PBS -l walltime=12:00:00
+#PBS -l walltime=5:00:00
 #PBS -P gch51650
 
 
@@ -16,11 +16,11 @@ module load cudnn/9.12/9.12.0
 module load nccl/2.25/2.25.1-1
 
 # GPU 指定
-export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+export CUDA_VISIBLE_DEVICES=0
 
 # プロジェクト設定
 YOUR_PROJECT_NAME="Delta-PRM"
-YOUR_RUN_NAME="03_train_prm_7b_30k_v3.0_chat_clean_new"
+YOUR_RUN_NAME="34_eval_prm_stepwise_prm_v3.0_1.5b_chat"
 
 # 環境指定
 source .delta_train/bin/activate
@@ -32,4 +32,8 @@ wandb login
 logfilename="${HOME}/log/${YOUR_RUN_NAME}.log"
 
 
-torchrun --nproc_per_node=8 src/03_train_prm_chat_clean_7b.py >& ${logfilename}
+python3 src/34_eval_prm_stepwise.py \
+    --model_path "models/prm_1.5b_30k_v3.0_chat_clean_new" \
+    --input_path "data/majority_voting_n16" \
+    --output_dir "results/bon_stepwise_scored_prm_v3.0_1.5b_chat" \
+    --batch_size 8 >& ${logfilename}
