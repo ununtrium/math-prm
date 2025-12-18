@@ -1,0 +1,22 @@
+The tokenizer you are loading from 'models/delta_prm_1.5b_pre_v1' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading model from models/delta_prm_1.5b_pre_v1...
+Loading validation data...
+Running inference...
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:01<03:15,  1.98s/it]  5%|▌         | 5/100 [00:02<00:30,  3.16it/s] 10%|█         | 10/100 [00:02<00:12,  7.18it/s] 15%|█▌        | 15/100 [00:02<00:07, 11.82it/s] 20%|██        | 20/100 [00:02<00:04, 16.89it/s] 25%|██▌       | 25/100 [00:02<00:03, 19.87it/s] 30%|███       | 30/100 [00:02<00:02, 24.64it/s] 36%|███▌      | 36/100 [00:02<00:02, 30.55it/s] 42%|████▏     | 42/100 [00:02<00:01, 35.84it/s] 48%|████▊     | 48/100 [00:03<00:01, 40.06it/s] 54%|█████▍    | 54/100 [00:03<00:01, 44.06it/s] 60%|██████    | 60/100 [00:03<00:00, 45.65it/s] 66%|██████▌   | 66/100 [00:03<00:00, 46.29it/s] 72%|███████▏  | 72/100 [00:03<00:00, 48.53it/s] 78%|███████▊  | 78/100 [00:03<00:00, 48.30it/s] 85%|████████▌ | 85/100 [00:03<00:00, 52.58it/s] 91%|█████████ | 91/100 [00:03<00:00, 53.93it/s] 98%|█████████▊| 98/100 [00:03<00:00, 55.80it/s]100%|██████████| 100/100 [00:03<00:00, 25.09it/s]
+
+==============================
+DIAGNOSTIC REPORT
+==============================
+MSE Loss (Recalculated): 0.3776
+Correlation (Pearson):   0.1979
+--------------------
+Label Range:      Min=-0.45, Max=1.83, Mean=0.44
+Prediction Range: Min=-0.55, Max=0.76, Mean=0.30
+--------------------
+Sample Predictions:
+  Label: 0.96  |  Pred: 0.36  |  Diff: 0.60
+  Label: 1.12  |  Pred: 0.25  |  Diff: 0.87
+  Label: 1.24  |  Pred: 0.66  |  Diff: 0.58
+  Label: 1.40  |  Pred: 0.58  |  Diff: 0.82
+  Label: 1.00  |  Pred: 0.63  |  Diff: 0.37

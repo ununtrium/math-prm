@@ -1,0 +1,15 @@
+Running Seeds: [7]
+Config: Width=20, Cands=10, Mem=0.5
+Output: data/experiments/benchmark_width20_candi10_7b_v3.0_chat_clean
+Total tasks: 2
+[GPU 0] Starting ORM Seed 7...
+[GPU 0] Finished ORM Seed 7 -> Acc: 75.80%
+[GPU 0] Starting PRM Seed 7...
+[GPU 0] Finished PRM Seed 7 -> Acc: 75.40%
+
+============================================================
+FINAL REPORT (Seeds: 7)
+============================================================
+ORM        | 75.80%     | ±0.00%     | 75.8%
+PRM        | 75.40%     | ±0.00%     | 75.4%
+============================================================

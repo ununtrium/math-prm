@@ -12,7 +12,7 @@ venv/
 # dataディレクトリ以下はすべて無視
 data/
 # logディレクトリ以下はすべて無視
-log/
+
 # 出力結果などのJSON/JSONLファイルも念のため除外（ルートにある場合）
 *.json
 *.jsonl
@@ -30,7 +30,6 @@ checkpoints/
 
 # --- その他 ---
 .DS_Store
-*.log
 slurm-*
 
 # --- ジョブスケジューラのログ (.sh.e12345, .sh.o12345 など) ---

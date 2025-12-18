@@ -1,0 +1,37 @@
+Total tasks: 20
+[GPU 0] Skipping ORM Seed 0 (Exists) -> Loaded Acc: 75.80%
+[GPU 7] Skipping PRM Seed 5 (Exists) -> Loaded Acc: 65.00%
+[GPU 1] Skipping PRM Seed 7 (Exists) -> Loaded Acc: 69.20%
+[GPU 7] Skipping ORM Seed 7 (Exists) -> Loaded Acc: 70.60%
+[GPU 1] Starting ORM Seed 9...
+[GPU 1] Finished ORM Seed 9 -> Acc: 71.20%
+[GPU 6] Skipping ORM Seed 6 (Exists) -> Loaded Acc: 66.60%
+[GPU 6] Skipping PRM Seed 4 (Exists) -> Loaded Acc: 62.60%
+[GPU 0] Starting PRM Seed 6...
+[GPU 0] Finished PRM Seed 6 -> Acc: 65.80%
+[GPU 4] Skipping ORM Seed 4 (Exists) -> Loaded Acc: 64.80%
+[GPU 0] Starting ORM Seed 8...
+[GPU 0] Finished ORM Seed 8 -> Acc: 71.80%
+[GPU 2] Skipping ORM Seed 2 (Exists) -> Loaded Acc: 76.00%
+[GPU 4] Skipping PRM Seed 2 (Exists) -> Loaded Acc: 72.20%
+[GPU 2] Starting PRM Seed 8...
+[GPU 2] Finished PRM Seed 8 -> Acc: 70.40%
+[GPU 5] Skipping ORM Seed 5 (Exists) -> Loaded Acc: 64.60%
+[GPU 2] Starting PRM Seed 0...
+[GPU 2] Finished PRM Seed 0 -> Acc: 72.80%
+[GPU 1] Skipping ORM Seed 1 (Exists) -> Loaded Acc: 73.60%
+[GPU 3] Starting PRM Seed 1...
+[GPU 3] Finished PRM Seed 1 -> Acc: 73.60%
+[GPU 3] Skipping ORM Seed 3 (Exists) -> Loaded Acc: 73.60%
+[GPU 5] Skipping PRM Seed 3 (Exists) -> Loaded Acc: 72.60%
+[GPU 3] Starting PRM Seed 9...
+[GPU 3] Finished PRM Seed 9 -> Acc: 70.80%
+
+============================================================
+FINAL 10-SEED BENCHMARK REPORT
+============================================================
+Model      | Mean Acc   | Std Dev    | Raw Seeds
+------------------------------------------------------------
+ORM        | 70.86%     | ±4.01%     | 64.8%, 70.6%, 64.6%, 73.6%, 76.0%, 73.6%, 66.6%, 75.8%, 71.2%, 71.8%
+PRM        | 69.50%     | ±3.59%     | 62.6%, 65.0%, 72.2%, 72.6%, 69.2%, 65.8%, 70.4%, 72.8%, 70.8%, 73.6%
+============================================================

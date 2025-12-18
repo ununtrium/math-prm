@@ -1,0 +1,119 @@
+Found 8 GPUs. Training on 2M+ samples (1 Epoch)...Found 8 GPUs. Training on 2M+ samples (1 Epoch)...
+Found 8 GPUs. Training on 2M+ samples (1 Epoch)...
+
+Found 8 GPUs. Training on 2M+ samples (1 Epoch)...
+Found 8 GPUs. Training on 2M+ samples (1 Epoch)...
+Found 8 GPUs. Training on 2M+ samples (1 Epoch)...
+Found 8 GPUs. Training on 2M+ samples (1 Epoch)...
+Found 8 GPUs. Training on 2M+ samples (1 Epoch)...
+Train samples: 2070027 (approx 2M)
+Eval samples:  5000
+Train samples: 2070027 (approx 2M)
+Eval samples:  5000
+Train samples: 2070027 (approx 2M)
+Eval samples:  5000
+Train samples: 2070027 (approx 2M)
+Eval samples:  5000
+Train samples: 2070027 (approx 2M)
+Eval samples:  5000
+Train samples: 2070027 (approx 2M)
+Eval samples:  5000
+Train samples: 2070027 (approx 2M)
+Eval samples:  5000
+Train samples: 2070027 (approx 2M)
+Eval samples:  5000
+Tokenizing... (This may take a while for 2M samples)
+Tokenizing... (This may take a while for 2M samples)
+Tokenizing... (This may take a while for 2M samples)
+Tokenizing... (This may take a while for 2M samples)
+Tokenizing... (This may take a while for 2M samples)
+Tokenizing... (This may take a while for 2M samples)
+Tokenizing... (This may take a while for 2M samples)
+Tokenizing... (This may take a while for 2M samples)
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+Some weights of Qwen2ForSequenceClassification were not initialized from the model checkpoint at Qwen/Qwen2.5-Math-1.5B-Instruct and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of Qwen2ForSequenceClassification were not initialized from the model checkpoint at Qwen/Qwen2.5-Math-1.5B-Instruct and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of Qwen2ForSequenceClassification were not initialized from the model checkpoint at Qwen/Qwen2.5-Math-1.5B-Instruct and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of Qwen2ForSequenceClassification were not initialized from the model checkpoint at Qwen/Qwen2.5-Math-1.5B-Instruct and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of Qwen2ForSequenceClassification were not initialized from the model checkpoint at Qwen/Qwen2.5-Math-1.5B-Instruct and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of Qwen2ForSequenceClassification were not initialized from the model checkpoint at Qwen/Qwen2.5-Math-1.5B-Instruct and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of Qwen2ForSequenceClassification were not initialized from the model checkpoint at Qwen/Qwen2.5-Math-1.5B-Instruct and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of Qwen2ForSequenceClassification were not initialized from the model checkpoint at Qwen/Qwen2.5-Math-1.5B-Instruct and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/src/03_train_orm_chat_clean.py:133: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/src/03_train_orm_chat_clean.py:133: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/src/03_train_orm_chat_clean.py:133: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/src/03_train_orm_chat_clean.py:133: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/src/03_train_orm_chat_clean.py:133: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/src/03_train_orm_chat_clean.py:133: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/src/03_train_orm_chat_clean.py:133: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/src/03_train_orm_chat_clean.py:133: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None}.
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None}.
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None}.
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None}.
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None}.
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None}.
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None}.
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None}.
+W1217 10:27:34.018000 23075637465536 torch/distributed/elastic/agent/server/api.py:688] Received Signals.SIGTERM death signal, shutting down workers
+W1217 10:27:34.022000 23075637465536 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1740817 closing signal SIGTERM
+W1217 10:27:34.024000 23075637465536 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1740818 closing signal SIGTERM
+W1217 10:27:34.029000 23075637465536 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1740819 closing signal SIGTERM
+W1217 10:27:34.030000 23075637465536 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1740820 closing signal SIGTERM
+W1217 10:27:34.032000 23075637465536 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1740821 closing signal SIGTERM
+W1217 10:27:34.038000 23075637465536 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1740822 closing signal SIGTERM
+W1217 10:27:34.039000 23075637465536 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1740823 closing signal SIGTERM
+W1217 10:27:34.041000 23075637465536 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1740824 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 348, in wrapper
+    return f(*args, **kwargs)
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 835, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/.delta_train/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 79, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 1740634 got signal: 15

@@ -1,0 +1,8 @@
+usage: 40_new_beam_search_min.py [-h] [--gen_model GEN_MODEL] --prm_model
+                                 PRM_MODEL [--output_file OUTPUT_FILE]
+                                 [--seed SEED] [--beam_width BEAM_WIDTH]
+                                 [--max_steps MAX_STEPS]
+                                 [--num_candidates NUM_CANDIDATES]
+                                 [--gpu_memory_utilization GPU_MEMORY_UTILIZATION]
+                                 [--max_model_len MAX_MODEL_LEN]
+40_new_beam_search_min.py: error: the following arguments are required: --prm_model

@@ -1,0 +1,15 @@
+Running Seeds: [4]
+Config: Width=20, Cands=10, Mem=0.6
+Output: data/experiments/benchmark_width20_candi10_seed0_beam
+Total tasks: 2
+[GPU 0] Starting ORM Seed 4...
+[GPU 0] Finished ORM Seed 4 -> Acc: 72.60%
+[GPU 0] Starting PRM Seed 4...
+[GPU 0] Finished PRM Seed 4 -> Acc: 73.20%
+
+============================================================
+FINAL REPORT (Seeds: 4)
+============================================================
+ORM        | 72.60%     | ±0.00%     | 72.6%
+PRM        | 73.20%     | ±0.00%     | 73.2%
+============================================================

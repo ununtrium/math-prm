@@ -1,0 +1,4 @@
+Running Seeds: [1]
+Config: Width=20, Cands=10, Mem=0.6
+Output: data/experiments/benchmark_min_width20_candi10_7b_v3.0_temp_chat_clean_new
+Total tasks: 2
