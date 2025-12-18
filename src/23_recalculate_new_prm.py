@@ -13,8 +13,8 @@ from sympy import simplify
 # ==========================================
 # 1. 設定パラメータ
 # ==========================================
-INPUT_DIR = "data/experiments/evaluation_v3.0_new_orm_7b"
-TARGET_STEP_SCORES_KEY = "step_scores_new" 
+INPUT_DIR = "data/experiments/bon_stepwise_scored_prm_v3.0_1.5b_chat"
+TARGET_STEP_SCORES_KEY = "step_scores" 
 
 # ==========================================
 # 2. ユーティリティ

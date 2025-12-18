@@ -6,7 +6,7 @@
 
 # 実行したいシードのリスト (必要なものをスペース区切りで記述)
 # 例: "2 4 6" や "0 1 2 3 4 5 6 7 8 9" など
-SEEDS=(0 1 2 3 4 5 6 7 8 9)
+SEEDS=(0 1)
 
 # 共通設定
 WIDTH="5"
@@ -17,7 +17,7 @@ MEMORY="0.6"
 # ※元のコードのパス末尾が seed0_beam となっていましたが、
 #   複数シードを保存する場合は汎用的な名前の方が管理しやすいかもしれません。
 #   必要に応じて書き換えてください。
-OUT_DIR="data/experiments/benchmark_width5_candi5_1.5b_v3.0_temp_chat_clean_new"
+OUT_DIR="data/experiments/benchmark_min_width5_candi5_7b_v3.0_temp_chat_clean_new"
 
 # 作業ディレクトリ
 WORK_DIR="/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM"
@@ -29,7 +29,7 @@ WORK_DIR="/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM"
 for SEED in "${SEEDS[@]}"; do
     
     # ジョブ名などを定義
-    RUN_NAME="32_run_beam_1.5b_30k_v3.0_width${WIDTH}_candi${CANDIDATES}_seed${SEED}_temp_chat_clean_new"
+    RUN_NAME="40_new_beam_search_min_7b_30k_v3.0_width${WIDTH}_candi${CANDIDATES}_seed${SEED}_temp_chat_clean_new"
     LOG_FILE="${WORK_DIR}/log/${RUN_NAME}.log"
     
     echo "Submitting Job for SEED: ${SEED} ..."
@@ -40,7 +40,7 @@ for SEED in "${SEEDS[@]}"; do
 #!/bin/sh
 #PBS -q rt_HG
 #PBS -l select=1
-#PBS -l walltime=10:00:00
+#PBS -l walltime=12:00:00
 #PBS -P gch51650
 #PBS -N ${RUN_NAME}
 
@@ -60,7 +60,7 @@ source .delta/bin/activate
 
 # 実行コマンド
 # (変数はすでに親スクリプトで展開された値が入ります)
-python3 src/32_run_benchmark_flexible_1.5b.py \\
+python3 src/32_run_benchmark_flexible.py \\
     --seeds "${SEED}" \\
     --beam_width "${WIDTH}" \\
     --num_candidates "${CANDIDATES}" \\

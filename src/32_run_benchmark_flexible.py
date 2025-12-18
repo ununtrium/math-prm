@@ -9,11 +9,11 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 # ★設定: モデルパス (ここは固定でもOKですが、必要なら引数化も可能です)
 # ==========================================
 MODELS = {
-    "ORM": "models/orm_7b_30k_v1.0",           
-    "PRM": "models/prm_7b_30k_v3.0/checkpoint-16174" 
+    "PRM": "models/prm_7b_30k_v3.0_chat_clean_new",
+    "ORM": "models/orm_7b_30k_v3.0_chat_clean_new",            
 }
 GEN_MODEL = "Qwen/Qwen2.5-Math-7B-Instruct"
-SCRIPT_PATH = "src/31_step_beam_search_vllm_final.py"
+SCRIPT_PATH = "src/40_new_beam_search_min.py"
 
 # ==========================================
 # 引数解析

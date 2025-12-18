@@ -1,7 +1,7 @@
 #!/bin/sh
 #PBS -q rt_HG
 #PBS -l select=1
-#PBS -l walltime=5:00:00
+#PBS -l walltime=6:00:00
 #PBS -P gch51650
 
 
@@ -20,7 +20,7 @@ export CUDA_VISIBLE_DEVICES=0
 
 # プロジェクト設定
 YOUR_PROJECT_NAME="Delta-PRM"
-YOUR_RUN_NAME="34_eval_prm_stepwise_orm_v3.0_1.5b_chat"
+YOUR_RUN_NAME="34_eval_prm_stepwise_prm_v3.0_7b_chat"
 
 # 環境指定
 source .delta_train/bin/activate
@@ -33,7 +33,7 @@ logfilename="${HOME}/log/${YOUR_RUN_NAME}.log"
 
 
 python3 src/34_eval_prm_stepwise.py \
-    --model_path "models/orm_1.5b_30k_v3.0_chat_clean_new" \
+    --model_path "models/prm_7b_30k_v3.0_chat_clean_new" \
     --input_path "data/experiments/majority_voting_n16" \
-    --output_dir "results/bon_stepwise_scored_orm_v3.0_1.5b_chat" \
+    --output_dir "data/experiments/bon_stepwise_scored_prm_v3.0_7b_chat" \
     --batch_size 8 >& ${logfilename}
