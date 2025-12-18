@@ -53,7 +53,7 @@ slurm-*
 wandb/
 
 # --- 一時的なノートブックや画像 ---
-*.png
+
 
 # --- Jupyter Notebookのキャッシュ ---
 .ipynb_checkpoints/
