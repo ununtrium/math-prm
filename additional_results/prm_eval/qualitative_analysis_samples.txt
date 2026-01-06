@@ -1,0 +1,143 @@
+=== 定性分析用サンプル候補 (下落幅上位 20 件) ===
+抽出条件: 下落幅 >= 0.5, 初期確信度 >= 0.7
+
+【No. 1】 下落幅: 1.145 (1.516 -> 0.371)
+発生ステップ: 第 2 ステップ
+スコア推移: [1.516, 0.371, 0.367, 0.33, 0.369, 0.318, 0.354, 0.371, 0.252]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_1.jsonl
+
+--- 問題 (Problem) ---
+Let $p$ be the least prime number for which there exists a positive integer $n$ such that $n^{4}+1$ is divisible by $p^{2}$. Find the least positive integer $m$ such that $m^{4}+1$ is divisible by $p^{2}$.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 2】 下落幅: 1.145 (1.516 -> 0.371)
+発生ステップ: 第 2 ステップ
+スコア推移: [1.516, 0.371, 0.367, 0.33, 0.369, 0.318, 0.354, 0.371, 0.252]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_2.jsonl
+
+--- 問題 (Problem) ---
+Let $p$ be the least prime number for which there exists a positive integer $n$ such that $n^{4}+1$ is divisible by $p^{2}$. Find the least positive integer $m$ such that $m^{4}+1$ is divisible by $p^{2}$.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 3】 下落幅: 1.145 (1.516 -> 0.371)
+発生ステップ: 第 2 ステップ
+スコア推移: [1.516, 0.371, 0.367, 0.33, 0.369, 0.318, 0.354, 0.371, 0.252]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_3.jsonl
+
+--- 問題 (Problem) ---
+Let $p$ be the least prime number for which there exists a positive integer $n$ such that $n^{4}+1$ is divisible by $p^{2}$. Find the least positive integer $m$ such that $m^{4}+1$ is divisible by $p^{2}$.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 4】 下落幅: 1.145 (1.516 -> 0.371)
+発生ステップ: 第 2 ステップ
+スコア推移: [1.516, 0.371, 0.367, 0.33, 0.369, 0.318, 0.354, 0.371, 0.243]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_4.jsonl
+
+--- 問題 (Problem) ---
+Let $p$ be the least prime number for which there exists a positive integer $n$ such that $n^{4}+1$ is divisible by $p^{2}$. Find the least positive integer $m$ such that $m^{4}+1$ is divisible by $p^{2}$.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 5】 下落幅: 1.145 (1.516 -> 0.371)
+発生ステップ: 第 2 ステップ
+スコア推移: [1.516, 0.371, 0.367, 0.33, 0.369, 0.318, 0.354, 0.371, 0.229]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_0.jsonl
+
+--- 問題 (Problem) ---
+Let $p$ be the least prime number for which there exists a positive integer $n$ such that $n^{4}+1$ is divisible by $p^{2}$. Find the least positive integer $m$ such that $m^{4}+1$ is divisible by $p^{2}$.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 6】 下落幅: 0.720 (0.570 -> -0.149)
+発生ステップ: 第 7 ステップ
+スコア推移: [0.875, 0.688, 0.629, 0.432, 0.52, 0.57, -0.149, 0.594, 0.656, 0.68, 0.613, 0.566]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_1.jsonl
+
+--- 問題 (Problem) ---
+Let $\omega\neq 1$ be a 13th root of unity. Find the remainder when
+\[\prod_{k=0}^{12}(2-2\omega^k+\omega^{2k})\]
+is divided by 1000.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 7】 下落幅: 0.720 (0.570 -> -0.149)
+発生ステップ: 第 7 ステップ
+スコア推移: [0.875, 0.688, 0.629, 0.432, 0.52, 0.57, -0.149, 0.594, 0.656, 0.68, 0.613, 0.566]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_2.jsonl
+
+--- 問題 (Problem) ---
+Let $\omega\neq 1$ be a 13th root of unity. Find the remainder when
+\[\prod_{k=0}^{12}(2-2\omega^k+\omega^{2k})\]
+is divided by 1000.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 8】 下落幅: 0.720 (0.570 -> -0.149)
+発生ステップ: 第 7 ステップ
+スコア推移: [0.875, 0.688, 0.629, 0.432, 0.52, 0.57, -0.149, 0.594, 0.656, 0.68, 0.613, 0.566]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_3.jsonl
+
+--- 問題 (Problem) ---
+Let $\omega\neq 1$ be a 13th root of unity. Find the remainder when
+\[\prod_{k=0}^{12}(2-2\omega^k+\omega^{2k})\]
+is divided by 1000.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 9】 下落幅: 0.720 (0.570 -> -0.149)
+発生ステップ: 第 7 ステップ
+スコア推移: [0.875, 0.688, 0.629, 0.432, 0.52, 0.57, -0.149, 0.594, 0.656, 0.68, 0.613, 0.566]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_4.jsonl
+
+--- 問題 (Problem) ---
+Let $\omega\neq 1$ be a 13th root of unity. Find the remainder when
+\[\prod_{k=0}^{12}(2-2\omega^k+\omega^{2k})\]
+is divided by 1000.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
+【No. 10】 下落幅: 0.720 (0.570 -> -0.149)
+発生ステップ: 第 7 ステップ
+スコア推移: [0.875, 0.688, 0.629, 0.432, 0.52, 0.57, -0.149, 0.594, 0.656, 0.68, 0.613, 0.566]
+元ファイル: results/aime24/Qwen2.5-Math-1.5B-Instruct/prm_1.5b_ensemble_raw_only_ckpt4054/samples_64/seed_0.jsonl
+
+--- 問題 (Problem) ---
+Let $\omega\neq 1$ be a 13th root of unity. Find the remainder when
+\[\prod_{k=0}^{12}(2-2\omega^k+\omega^{2k})\]
+is divided by 1000.
+
+--- 推論プロセス (Content) ---
+
+
+================================================================================
+
