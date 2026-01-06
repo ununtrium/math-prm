@@ -18,11 +18,11 @@ module load nccl/2.25/2.25.1-1
 export CUDA_VISIBLE_DEVICES=0
 
 # 環境指定
-source .delta_train/bin/activate
+source .delta/bin/activate
 
 # 1. アノテーションに使用するモデル
 # PRMとして学習させる予定のモデル(1.5B)を指定することを強く推奨します。
-MODEL_ID="Qwen/Qwen2.5-Math-7B-Instruct" # ここを変更
+MODEL_ID="deepseek-ai/deepseek-math-7b-instruct" # ここを変更
 MODEL_NAME="${MODEL_ID##*/}"
 
 # 2. 入力ファイル (生成フェーズで作成したファイル)

@@ -22,8 +22,8 @@ source .delta_train/bin/activate
 
 # 1. アノテーションに使用するモデル
 # PRMとして学習させる予定のモデル(1.5B)を指定することを強く推奨します。
-MODEL_ID="Qwen/Qwen2.5-Math-7B-Instruct" # ここを変更
-MODEL_NAME="${MODEL_ID##*/}"
+MODEL_ID="/groups/gch51650/kawahara_lab/enomoto/self-correct/Delta-PRM/models/Llama-3.1-8B-Instruct" # ここを変更
+MODEL_NAME=$(basename "${MODEL_ID}")
 
 # 2. 入力ファイル (生成フェーズで作成したファイル)
 INPUT_FILE="data/numinamath_gen_15k.jsonl"
